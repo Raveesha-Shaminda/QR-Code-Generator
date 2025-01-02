@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download QR Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: rgb(33, 0, 46);
+            animation: fadeIn 1s ease-in-out;
+        }
+        p{
+            color: #ffffff;
+        }
+
+        h1 {
+            color: #ffffff;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        #userName {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        img {
+            width: 300px;
+            height: 300px;
+            margin-bottom: 20px;
+            animation: zoomIn 1s ease-in-out;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 1em;
+            color: rgb(255, 255, 255);
+            background-color: #b700ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #7c00ad;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            img {
+                width: 300px;
+                height: 300px;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            img {
+                width: 300px;
+                height: 300px;
+            }
+
+            button {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Your QR Code</h1>
+    <p id="userName"></p>
+    <img id="qrCodeImage" alt="QR Code"><br><br>
+    <a id="downloadButton" download="qrcode-RSD.png">
+        <button>Download QR Code</button>
+    </a><br><br>
+    <a href="/">Go back</a>
+
+    <script>
+        // Dynamically populate the page with QR code and user name
+        const params = new URLSearchParams(window.location.search);
+        const userName = params.get('name');
+        const qrCode = params.get('qrCode');
+
+        if (userName && qrCode) {
+            document.getElementById('userName').innerText = `User: ${userName}`;
+            const qrCodeImage = document.getElementById('qrCodeImage');
+            qrCodeImage.src = qrCode;
+
+            const downloadButton = document.getElementById('downloadButton');
+            downloadButton.href = qrCode;
+        } else {
+            document.body.innerHTML = '<h1>Error: QR Code not found!</h1>';
+        }
+    </script>
+</body>
+</html>

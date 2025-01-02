@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(33, 0, 46);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h3 {
+            text-align: center;
+            color: #1f1f1f;
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            animation: slideIn 0.5s ease-in-out;
+        }
+        label {
+            font-weight: bold;
+            color: #292929;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"], input[type="url"] {
+            width: calc(100% - 14px);
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #6000b9;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            background-color: #b700ff;
+            color: rgb(255, 255, 255);
+            padding: 12px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #7c00ad;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            form {
+                padding: 15px;
+            }
+            button {
+                padding: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            form {
+                padding: 10px;
+            }
+            button {
+                padding: 8px;
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="/generate" method="POST">
+        <h3>QR Code Generator</h3>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="whatsapp">WhatsApp Number:</label>
+        <input type="text" id="whatsapp" name="whatsapp" required>
+
+        <label for="fbProfile">Facebook Profile:</label>
+        <input type="url" id="fbProfile" name="fbProfile">
+
+        <label for="ytProfile">YouTube Profile:</label>
+        <input type="url" id="ytProfile" name="ytProfile">
+
+        <label for="tiktokProfile">TikTok Profile:</label>
+        <input type="url" id="tiktokProfile" name="tiktokProfile">
+
+        <button type="submit">Generate QR Code</button>
+    </form>
+</body>
+</html>
